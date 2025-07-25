@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: curl-diagram-generator
+
+  # Web configuration
+  web:
+    resources:
+      static-locations: classpath:/static/
+      cache:
+        period: 0  # Disable caching in development
+
+
+logging:
+  level:
+    com.sm: DEBUG
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+
+# Custom application properties
+app:
+  name: Curl to Diagram Generator
+  version: 1.0.0
+  description: Transform curl commands into beautiful diagrams
