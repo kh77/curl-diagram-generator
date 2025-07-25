@@ -3,6 +3,7 @@ package com.sm.controller.response;
 import java.util.Map;
 
 public class DiagramResponse {
+    private String status;
     private String diagramType;
     private String plantUmlSource;
     private String base64Image;
@@ -33,4 +34,12 @@ public class DiagramResponse {
     
     public Map<String, Object> getMetadata() { return metadata; }
     public void setMetadata(Map<String, Object> metadata) { this.metadata = metadata; }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

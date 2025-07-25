@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.sm.model.CurlCommand;
 import com.sm.controller.response.DiagramResponse;
+import com.sm.model.CurlCommand;
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.SourceStringReader;
@@ -181,5 +181,16 @@ public class DiagramGeneratorService {
     private String truncateData(String data) {
         if (data == null) return "";
         return data.length() > 50 ? data.substring(0, 50) + "..." : data;
+    }
+
+    public DiagramResponse generateDiagram(String diagramType, List<CurlCommand> commands, String title) {
+        switch (diagramType.toLowerCase()) {
+            case "flowchart":
+                return generateFlowchartDiagram(commands, title);
+            case "network":
+                return generateNetworkDiagram(commands, title);
+            default: // "sequence":
+                return generateSequenceDiagram(commands, title);
+        }
     }
 }

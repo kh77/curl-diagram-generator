@@ -1,4 +1,4 @@
-# 🔄 Curl to Diagram Generator
+# 🔄 Curl/Har to Diagram Generator
 
 Transform your curl commands into beautiful visual diagrams with this Spring Boot application. Perfect for API documentation, workflow visualization, and team communication.
 
@@ -8,6 +8,7 @@ Transform your curl commands into beautiful visual diagrams with this Spring Boo
 - **PlantUML Integration**: High-quality diagram generation
 - **REST API**: Easy integration with other tools
 - **Curl Parser**: Intelligent parsing of complex curl commands
+- **Har file Parser**: Intelligent parsing of complex har file
 - **Export Options**: Base64 encoded images and source code
 
 ## 📋 Prerequisites
@@ -217,6 +218,16 @@ curl -X POST http://localhost:8080/api/diagrams/generate \
   }'
 ```
 
+### Generate From har file, har file is present in the project root `api.har`
+```bash
+curl --request POST \
+    --url http://localhost:8080/api/diagrams/generate-from-har \
+    --header 'content-type: multipart/form-data' \
+    --form harFile=@harFile \
+    --form diagramType=sequence \
+    --form 'title=Test API'
+```
+
 ### Generate All Diagrams at Once
 ```bash
 curl -X POST http://localhost:8080/api/diagrams/generate-all \
@@ -226,6 +237,7 @@ curl -X POST http://localhost:8080/api/diagrams/generate-all \
     "title": "Complete API Workflow"
   }'
 ```
+
 
 ## 📊 View Diagram 
 -  When you run the project, use http://localhost:8080/ and copy your base64 response and press `View Image` button.
